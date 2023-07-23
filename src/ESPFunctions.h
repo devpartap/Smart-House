@@ -1,6 +1,6 @@
 #pragma once
 #include <Arduino.h>
-#include "../include/Definations.h"
+#include "../include/GlobalDefinations.h"
 
 void espWaitRead(uint16_t size = 0);
 void espCloseClient(const char &DeviceIndex);

@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-#include "Definations.h"
+#include "GlobalDefinations.h"
 #include "ESPFunctions.h"
 #include "RelayFunctions.h"
 
@@ -10,7 +10,6 @@ void setup()
   Console(begin(115200));
   ESP8266.begin(115200);
   ESP8266.setTimeout(10);
-
 
   Console(println("start"));
 
@@ -49,7 +48,6 @@ void processRequest(String &req)
   uint8_t DeviceStatus;
 
   String ClientInfo;
-
   index = req.indexOf("POST", index);
 
   while (index != -1) {
