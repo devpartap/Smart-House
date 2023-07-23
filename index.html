@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Access-Control-Allow-Origin" content="http://192.168.29.167" />
+    <meta http-equiv="Keep-Alive" content="timeout=0" />
+
+    <link rel="stylesheet" href="Properties.css">
+
+</head>
+
+<body style="font-family: helvetica;">
+
+    <h2>
+        Room 1
+        <hr>
+        Door Lights
+        <div class="_right">
+            <label class="switch">
+                <input type="checkbox" id="L0" onclick="update(0)">
+                <span class="slider round"></span>
+            </label><br>
+        </div>
+
+        Center Lights
+        <div class="_right">
+            <label class="switch">
+                <input type="checkbox" id="L1" onclick="update(1)">
+                <span class="slider round"></span>
+            </label><br>
+        </div>
+
+        Back Lights
+        <div class="_right">
+            <label class="switch">
+                <input type="checkbox" id="L2" onclick="update(2)">
+                <span class="slider round"></span>
+            </label><br>
+        </div>
+
+    </h2>
+    <h2>
+        Room Fan :-
+        <div class="_right">
+            <label class="switch">
+                <input type="checkbox" id="F0" onclick="update(3)">
+                <span class="slider round"></span>
+            </label><br>
+        </div>
+    </h2>
+    <h2>
+
+        Lamp Plug :-
+        <div class="_right">
+            <label class="switch">
+                <input type="checkbox" id="P0" onclick="update(4)">
+                <span class="slider round"></span>
+            </label><br>
+        </div>
+
+        Tv Plug :-
+        <div class="_right">
+            <label class="switch">
+                <input type="checkbox" id="P1" onclick="update(5)">
+                <span class="slider round"></span>
+            </label><br>
+        </div>
+
+    </h2>
+</body>
+
+</html>
+
+<script>
+
+    setInterval(GetDeviceStatus,1500);
+
+    var deviceElements = [
+        document.getElementById('L0'),
+        document.getElementById('L1'),
+        document.getElementById('L2'),
+        document.getElementById('F0'),
+        document.getElementById('P0'),
+        document.getElementById('P1')
+    ];
+
+
+
+    async function GetDeviceStatus(){
+    
+        fetch('http://192.168.29.167:0080', {
+           method: 'POST',
+           headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: "{?}"
+
+        }).then((recieved) => {
+        recieved.text().then(msg => {
+            console.log(msg);
+            updateDeviceStatus(msg);
+        })
+    })
+    }
+
+    function updateDeviceStatus(state){
+        let i = 0;
+        deviceElements.forEach(element => {
+            if(state[i] == '1'){
+                element.checked = true;
+            }
+            else {
+                element.checked = false
+            }
+            i++;
+        });
+    }
+    
+
+    function update(DeviceID) {
+
+        let command = "{" + DeviceID + ":" + ((deviceElements[DeviceID].checked == true) ? 1 : 0) + "}";
+
+        console.log(DeviceID);
+        console.log(deviceElements[DeviceID].checked);
+
+        fetch('http://192.168.29.167:0080', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+
+            body: command // {1:1}
+        }).catch(ctch => {console.log(ctch)})
+    }
+
+
+
+</script>
