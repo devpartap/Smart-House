@@ -1,12 +1,24 @@
-#define DEBUG
+// --DEBUG?
+#define __DEBUG__ 
+
+// --PLACETOCOMPILE?
+#define _LOBBY_
+//#define _MAINROOM_
+
+#ifdef __MEGA2560__
 #define ESP8266 Serial1
+#endif
 
-#ifdef DEBUG
+#ifdef __UNO__
+#define ESP8266 Serial
+#endif
 
+#if defined(__MEGA2560__) && defined(__DEBUG__)
 #define Console(x) Serial.x
 #else
 #define Console(x)
 #endif
+
 
 #define test_led 12
 

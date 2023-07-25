@@ -4,12 +4,14 @@
 #include "ESPFunctions.h"
 #include "RelayFunctions.h"
 
+String msg_buff = "";
+
 void setup()
 {
 
   Console(begin(115200));
   ESP8266.begin(115200);
-  ESP8266.setTimeout(10);
+  ESP8266.setTimeout(15);
 
   Console(println("start"));
 
@@ -30,7 +32,6 @@ void loop()
     Console(println("readingst"));
     String data = ESP8266.readString();
     Console(println("donest"));
-    Console(println(data));
     Console(println(data.length()));
     processRequest(data);
   }
@@ -42,26 +43,43 @@ void processRequest(String &req)
   int16_t index = 0;
   uint16_t msg_index;
   uint16_t info_Index;
-  uint16_t client_Index;
+  int16_t client_Index;
 
   uint16_t Device;
   uint8_t DeviceStatus;
 
   String ClientInfo;
+
+  if(msg_buff != "")
+  {
+    req = msg_buff + req;
+    msg_buff = "";
+  }
+
   index = req.indexOf("POST", index);
+  client_Index = req.indexOf(",CONN") - 1;
+
+  if(client_Index != -2 && req.length() <= 200)
+  {
+    msg_buff = req;
+    index = -1;
+    Console(println("IN BUFFER"));
+    Console(println(msg_buff));
+    Console(println("BUFFEND"));
+  }
+
 
   while (index != -1) {
 
     Console(println("POST receved!"));
-    msg_index = req.indexOf("{",index+230);
+    Console(println(req));
+    msg_index = req.indexOf("{",index+200);
 
-    if(index >= 25) {
-    client_Index = req.indexOf(",CONN",index - 25) - 1;
+    if(index >= 240) {
+    client_Index = req.indexOf(",CONN",index - 50) - 1;
     } 
-    else {
-     client_Index = req.indexOf(",CONN") - 1;
-    }
 
+    
     if(req[msg_index + 1] == '?')
     {
       Console(println("SERVERREQUESTEDINFO"));
@@ -98,4 +116,5 @@ void processRequest(String &req)
 
     index = req.indexOf("POST", index+240);
   }
+  
 }

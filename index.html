@@ -5,90 +5,168 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Access-Control-Allow-Origin" content="http://192.168.29.167" />
-    <meta http-equiv="Keep-Alive" content="timeout=0" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="http://192.168.29.168" />
+    <meta http-equiv="Keep-Alive" content="timeout=2" />
 
     <link rel="stylesheet" href="Properties.css">
 
 </head>
 
-<body style="font-family: helvetica;">
+<body>
 
-    <h2>
-        Room 1
-        <hr>
-        Door Lights
-        <div class="_right">
+<table style="width: 100%;table-layout: fixed; border-width: 0px;">
+    <th ><button id="roombut" class="tabbuttonsactive" onclick="activeMain()">Main Room</button></th>
+    <th ><button id="lobbybut" class="tabbuttonsinactive" onclick="activelobby()">Lobby</button></th>
+</table>
+
+    <hr>
+
+<div id="mainroom" >
+
+    <table style="width: 95%; position: relative; margin:auto">
+        <tr style="height: 40px;">
+            <td class="DeviceFont">Right Ceiling Lights</td>
+
+            <td style="position: relative; float: right;"><div class="_right">
+                <label class="switch">
+                    <input type="checkbox" id="MRL0" onclick="update(0,mainElements,0)">
+                    <span class="slider round"></span>
+                </label>
+            </div></td>
+        </tr>
+    
+    
+        <tr style="height: 40px;">
+            <td class="DeviceFont">Left Ceiling Lights</td>
+            <td style="position: relative; float: right;"><div class="_right">
+                <label class="switch">
+                    <input type="checkbox" id="MRL1" onclick="update(1,mainElements,0)">
+                    <span class="slider round"></span>
+                </label>
+            </div></td>
+        </tr>
+
+        <tr style="height: 40px;">
+            <td class="DeviceFont">Right Lights</td>
+            <td style="position: relative; float: right;"><div class="_right">
             <label class="switch">
-                <input type="checkbox" id="L0" onclick="update(0)">
+                <input type="checkbox" id="MRL2" onclick="update(2,mainElements,0)">
                 <span class="slider round"></span>
-            </label><br>
-        </div>
+            </label>
+            </div></td>
+        </tr>
 
-        Center Lights
-        <div class="_right">
+    
+        <tr style="height: 40px;">
+            <td class="DeviceFont">Outer Blue Light</td>
+            <td style="position: relative; float: right;"><div class="_right">
             <label class="switch">
-                <input type="checkbox" id="L1" onclick="update(1)">
+                <input type="checkbox" id="MRB0" onclick="update(3,mainElements,0)">
                 <span class="slider round"></span>
-            </label><br>
-        </div>
-
-        Back Lights
-        <div class="_right">
+            </label>
+            </div></td>
+        </tr>
+    
+    
+        <tr style="height: 40px;">    
+            <td class="DeviceFont">Inner Blue Light</td>
+            <td style="position: relative; float: right;"><div class="_right">
             <label class="switch">
-                <input type="checkbox" id="L2" onclick="update(2)">
+                <input type="checkbox" id="MRB1" onclick="update(4,mainElements,0)">
                 <span class="slider round"></span>
-            </label><br>
-        </div>
+            </label>
+        </div></td>
+        </tr>
+        <tr style="height: 40px;">
+            <td class="DeviceFont">Plug</td>
+            <td style="position: relative; float: right;"><div class="_right">
+                <label class="switch">
+                    <input type="checkbox" id="MRP0" onclick="update(5,mainElements,0)">
+                    <span class="slider round"></span>
+                </label>
+            </div></td>
+        </tr>
 
-    </h2>
-    <h2>
-        Room Fan :-
-        <div class="_right">
-            <label class="switch">
-                <input type="checkbox" id="F0" onclick="update(3)">
-                <span class="slider round"></span>
-            </label><br>
-        </div>
-    </h2>
-    <h2>
 
-        Lamp Plug :-
-        <div class="_right">
-            <label class="switch">
-                <input type="checkbox" id="P0" onclick="update(4)">
-                <span class="slider round"></span>
-            </label><br>
-        </div>
+    </table>
+</div>
 
-        Tv Plug :-
-        <div class="_right">
-            <label class="switch">
-                <input type="checkbox" id="P1" onclick="update(5)">
-                <span class="slider round"></span>
-            </label><br>
-        </div>
+<div id="lobby">
+    <table style="width: 95%; position: relative; margin:auto">
+        
+        <tr style="height: 40px;">
+            <td class="DeviceFont">Right Lights</td>
+            <td style="position: relative; float: right;"><div class="_right">
+                <label class="switch">
+                    <input type="checkbox" id="LBL0" onclick="update(0,lobbyElements,1)">
+                    <span class="slider round"></span>
+                </label>
+            </div></td>
+        </tr>
 
-    </h2>
+        <tr style="height: 40px;">
+            <td class="DeviceFont">Left Lights</td>
+            <td style="position: relative; float: right;"><div class="_right">
+                <label class="switch">
+                    <input type="checkbox" id="LBL1" onclick="update(1,lobbyElements,1)">
+                    <span class="slider round"></span>
+                </label>
+            </div></td>
+        </tr>
+        
+        <tr style="height: 40px;">
+            <td class="DeviceFont">Center Light</td>
+            <td style="position: relative; float: right;"><div class="_right">
+                <label class="switch">
+                    <input type="checkbox" id="LBL2" onclick="update(2,lobbyElements,1)">
+                    <span class="slider round"></span>
+                </label>
+            </div></td>
+        </tr>
+
+        <tr style="height: 40px;">
+            <td class="DeviceFont">Fan</td>
+            <td style="position: relative; float: right;"><div class="_right">
+                <label class="switch">
+                    <input type="checkbox" id="LBF0" onclick="update(3,lobbyElements,1)">
+                    <span class="slider round"></span>
+                </label>
+            </div></td>
+        </tr>
+    </table>
+    
+</div>
 </body>
 
 </html>
 
 <script>
 
-    setInterval(GetDeviceStatus,1500);
+    setInterval(GetDeviceStatus,800);
 
-    var deviceElements = [
-        document.getElementById('L0'),
-        document.getElementById('L1'),
-        document.getElementById('L2'),
-        document.getElementById('F0'),
-        document.getElementById('P0'),
-        document.getElementById('P1')
+    let askStatus = [true,true]
+
+    var mainElements = [
+        document.getElementById('MRL0'),
+        document.getElementById('MRL1'),
+        document.getElementById('MRL2'),
+        document.getElementById('MRB0'),
+        document.getElementById('MRB1'),
+        document.getElementById('MRP0')
+    ];
+
+    var lobbyElements = [
+        document.getElementById('LBL0'),
+        document.getElementById('LBL1'),
+        document.getElementById('LBL2'),
+        document.getElementById('LBF0'),
     ];
 
 
-
+// Fetch Status
     async function GetDeviceStatus(){
+
+        if(askStatus[0]){
     
         fetch('http://192.168.29.167:0080', {
            method: 'POST',
@@ -99,34 +177,76 @@
 
         }).then((recieved) => {
         recieved.text().then(msg => {
-            console.log(msg);
-            updateDeviceStatus(msg);
+            if(askStatus[0]){
+                updateDeviceStatus(msg,mainElements);
+                console.log(msg);
+            }
         })
     })
+    } 
+    else{
+        askStatus[0] = true;
     }
 
-    function updateDeviceStatus(state){
-        let i = 0;
-        deviceElements.forEach(element => {
-            if(state[i] == '1'){
-                element.checked = true;
-            }
-            else {
-                element.checked = false
-            }
-            i++;
-        });
+    if(askStatus[1]){
+
+        fetch('http://192.168.29.168:0080', {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: "{?}"
+
+            }).then((recieved) => {
+            recieved.text().then(msg => {
+                if(askStatus[1]){
+                    console.log(msg);
+                    updateDeviceStatus(msg,lobbyElements);   
+                }         
+            })
+    })
     }
+    else {
+        askStatus[1] = true;
+    }
+}
+
+    function updateDeviceStatus(state,Devices){
+        if(state){
+            let i = 0;
+            Devices.forEach(element => {
+               if(state[i] == '1'){
+                    element.checked = true;
+                }
+              else {
+                   element.checked = false
+                }
+                i++;
+            
+            });
+        }
+}
     
 
-    function update(DeviceID) {
+    //on click
 
+    function update(DeviceID,deviceElements,adress) {
+        
+        let url = ""
+        if(adress == 0){
+            url = "http://192.168.29.167:0080";
+            askStatus[0] = false;
+        }
+        else if(adress == 1){
+            url = "http://192.168.29.168:0080"
+            askStatus[1] = false;
+        }
         let command = "{" + DeviceID + ":" + ((deviceElements[DeviceID].checked == true) ? 1 : 0) + "}";
 
         console.log(DeviceID);
         console.log(deviceElements[DeviceID].checked);
 
-        fetch('http://192.168.29.167:0080', {
+        fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -134,8 +254,33 @@
 
             body: command // {1:1}
         }).catch(ctch => {console.log(ctch)})
-    }
+        
+}
 
+    document.getElementById("mainroom").style.display = 'block'; 
+    document.getElementById("lobby").style.display = 'none'; 
+
+
+    // fade
+    function activeMain(){
+        document.getElementById("roombut").classList.remove('tabbuttonsinactive');
+        document.getElementById("roombut").classList.add('tabbuttonsactive');
+        document.getElementById("lobbybut").classList.remove('tabbuttonsactive');
+        document.getElementById("lobbybut").classList.add('tabbuttonsinactive');
+
+        document.getElementById("mainroom").style.display = 'block'; 
+        document.getElementById("lobby").style.display = 'none'; 
+}
+
+    function activelobby(){
+        document.getElementById("lobbybut").classList.remove('tabbuttonsinactive');
+        document.getElementById("lobbybut").classList.add('tabbuttonsactive');
+        document.getElementById("roombut").classList.remove('tabbuttonsactive');
+        document.getElementById("roombut").classList.add('tabbuttonsinactive');
+
+        document.getElementById("mainroom").style.display = 'none'; 
+        document.getElementById("lobby").style.display = 'block';  
+}
 
 
 </script>

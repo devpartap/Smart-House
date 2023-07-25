@@ -4,11 +4,13 @@
     width:  60px;
     height:  34px;
 }
+
 .switch input  {
     opacity:  0;
     width:  0;
     height:  0;
 }
+
 .slider  {
     position:  absolute;
     cursor:  pointer;
@@ -20,6 +22,11 @@
     -webkit-transition:  .4s;
     transition:  .4s;
 }
+
+.slider:hover{
+    box-shadow:  0 0 3px #2196F3;
+}
+
 .slider:before  {
     position:  absolute;
     content:  "";
@@ -31,25 +38,65 @@
     -webkit-transition:  .4s;
     transition:  .4s;
 }
+
 input:checked + .slider  {
     background-color:  #2196F3;
 }
+
 input:focus + .slider  {
     box-shadow:  0 0 1px #2196F3;
 }
+
 input:checked + .slider:before  {
+    -webkit-tap-highlight-color: transparent;
     -webkit-transform:  translateX(26px);
     -ms-transform:  translateX(26px);
     transform:  translateX(26px);
 }
+
 .slider.round  {
     border-radius:  34px;
 }
+
 .slider.round:before  {
     border-radius:  50%;
 }
 
-
 ._right {
     margin-left:auto; margin-right: 0%;
+}
+
+
+
+.tabbuttonsactive{
+    background-color: #e7e7e7;
+    font-weight: 560;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 19px;
+    width: 100%;
+    transition: 0.3s;
+}
+.tabbuttonsinactive{
+    background-color: #555555;
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    width: 100%;
+    transition: 0.3s;
+}
+
+.DeviceFont{
+    font-family:Helvetica;
+    font-weight: 600;
+    font-size: x-large;
+    color: #2b2b2b;
+
 }

@@ -1,19 +1,18 @@
 #include <EEPROM.h>
 #include "RelayFunctions.h"
 
-#define Lights_no 3
-#define Fan_no 1
-#define Plugs_no 2
+// ------ Device To Compile ----------
 
-#define Devices_no 6
+#ifdef _MAINROOM_
+#include "../include/Devices/MainRoom.h"
+#endif
 
-const uint8_t Devices[3][Devices_no] = {
-  {43,45,47,49,51,53},            // {Relay Pins}
-  {28,30,32,34,36,38},            // {Switch Pins}
-  {0 , 2, 4, 6, 8,10}             // {EEPROM Adress}
-  };
+#ifdef _LOBBY_
+#include "../include/Devices/Lobby.h"
+#endif
 
-bool Devices_Switch[Devices_no] = {0,0,0,0,0,0};
+// ----------------------------------------------------
+
 
 
 void relayAlterDevice(const uint16_t &device, const uint8_t &state)
