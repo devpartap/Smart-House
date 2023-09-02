@@ -7,29 +7,82 @@
     <meta http-equiv="Access-Control-Allow-Origin" content="http://192.168.29.167" />
     <meta http-equiv="Access-Control-Allow-Origin" content="http://192.168.29.168" />
     <meta http-equiv="Keep-Alive" content="timeout=2" />
+    <meta name="viewport" content="width=1080px">
 
     <link rel="stylesheet" href="Properties.css">
 
 </head>
 
 <body>
-
+<div id="header"style="width: 100%">
 <table style="width: 100%;table-layout: fixed; border-width: 0px;">
     <th ><button id="roombut" class="tabbuttonsactive" onclick="activeMain()">Main Room</button></th>
-    <th ><button id="lobbybut" class="tabbuttonsinactive" onclick="activelobby()">Lobby</button></th>
+    <th ><button id="lobbybut" class="tabbuttonsinactive" onclick="activelobby()">lobby</button></th>
 </table>
+</div>
+<hr>
+<br>
 
-    <hr>
+<div id = "mainroom">
+    <div style="width:100%">
+        <img src="overlays/background.png" alt="noimg" style="object-fit:fill">
+    </div>
 
-<div id="mainroom" >
+        <img src="overlays/LeftGlare.png" id="LeftGlare">
+        <img src="overlays/RightGlare.png" id="RightGlare">
+        <img src="overlays/OuterGlare.png" id="OuterGlare">
+
+
+        <overlay id="LeftLedStripLeft" onclick="toggleLedStripGlare(0)"></overlay>
+        <overlay id="LeftLedStripRight" onclick="toggleLedStripGlare(0)"></overlay>
+        <overlay id="LeftLedStripTop" onclick="toggleLedStripGlare(0)"></overlay>
+        <overlay id="LeftLedStripBottom" onclick="toggleLedStripGlare(0)"></overlay>
+        
+        <overlay id="OuterLedStripUP" onclick="toggleLedStripGlare(1)"></overlay>
+        <overlay id="OuterLedStripRIGHT" onclick="toggleLedStripGlare(1)"></overlay>
+        
+        <overlay id="RightLedStripLeft" onclick="toggleLedStripGlare(2)"></overlay>
+        <overlay id="RightLedStripRight" onclick="toggleLedStripGlare(2)"></overlay>
+        <overlay id="RightLedStripTop" onclick="toggleLedStripGlare(2)"></overlay>
+
+        <img src="overlays/lights.png" id="ceilinglight2" class="ceilinglight" onclick="toggleLedGlareOn(0)">
+        <img src="overlays/light-ray.png" id="ceilinglightray2" class="ceilinglightray" onclick="toggleLedGlareOff(0)">
+
+        <img src="overlays/lights.png" id="ceilinglight3" class="ceilinglight" onclick="toggleLedGlareOn(0)">
+        <img src="overlays/light-ray.png" id="ceilinglightray3" class="ceilinglightray" onclick="toggleLedGlareOff(0)">
+
+        <img src="overlays/lights.png" id="ceilinglight4" class="ceilinglight" onclick="toggleLedGlareOn(0)">
+        <img src="overlays/light-ray.png" id="ceilinglightray4" class="ceilinglightray" onclick="toggleLedGlareOff(0)">
+
+        <img src="overlays/lights.png" id="ceilinglight0" class="ceilinglight" onclick="toggleLedGlareOn(1)">
+        <img src="overlays/light-ray.png" id="ceilinglightray0" class="ceilinglightray" onclick="toggleLedGlareOff(1)">
+
+        <img src="overlays/lights.png" id="ceilinglight1" class="ceilinglight" onclick="toggleLedGlareOn(1)">
+        <img src="overlays/light-ray.png" id="ceilinglightray1" class="ceilinglightray" onclick="toggleLedGlareOff(1)">
+
+
+        <img src="overlays/lights.png" id="ceilinglight5" class="ceilinglight" onclick="toggleLedGlareOn(2)">
+        <img src="overlays/light-ray.png" id="ceilinglightray5" class="ceilinglightray" onclick="toggleLedGlareOff(2)">
+
+        <img src="overlays/lights.png" id="ceilinglight6" class="ceilinglight" onclick="toggleLedGlareOn(2)">
+        <img src="overlays/light-ray.png" id="ceilinglightray6" class="ceilinglightray" onclick="toggleLedGlareOff(2)">
+
+        <img src="overlays/lights.png" id="ceilinglight7" class="ceilinglight" onclick="toggleLedGlareOn(2)">
+        <img src="overlays/light-ray.png" id="ceilinglightray7" class="ceilinglightray" onclick="toggleLedGlareOff(2)">
+    
+        <img src="overlays/PlugOff.png" id="plugoff" class="plug" onclick="togglePlugOn(0)">
+        <img src="overlays/PlugOn.png" id="plugon" class="plug" onclick="togglePlugOff(0)">
+</div>
+
+<div id="mainroomLegacy" >
 
     <table style="width: 95%; position: relative; margin:auto">
         <tr style="height: 40px;">
             <td class="DeviceFont">Right Ceiling Lights</td>
 
-            <td style="position: relative; float: right;"><div class="_right">
+            <td style="position: relative; text-align: right; right: 3%;"><div class="_right">
                 <label class="switch">
-                    <input type="checkbox" id="MRL0" onclick="update(0,mainElements,0)">
+                    <input type="checkbox" id="MRL0" onclick="checkledtoggle(0,this)">
                     <span class="slider round"></span>
                 </label>
             </div></td>
@@ -38,9 +91,9 @@
     
         <tr style="height: 40px;">
             <td class="DeviceFont">Left Ceiling Lights</td>
-            <td style="position: relative; float: right;"><div class="_right">
+            <td style="position: relative; text-align: right; right: 3%;"><div class="_right">
                 <label class="switch">
-                    <input type="checkbox" id="MRL1" onclick="update(1,mainElements,0)">
+                    <input type="checkbox" id="MRL1" onclick="checkledtoggle(1,this)">
                     <span class="slider round"></span>
                 </label>
             </div></td>
@@ -48,9 +101,9 @@
 
         <tr style="height: 40px;">
             <td class="DeviceFont">Right Lights</td>
-            <td style="position: relative; float: right;"><div class="_right">
+            <td style="position: relative; text-align: right; right: 3%;"><div class="_right">
             <label class="switch">
-                <input type="checkbox" id="MRL2" onclick="update(2,mainElements,0)">
+                <input type="checkbox" id="MRL2" onclick="checkledtoggle(2,this)">
                 <span class="slider round"></span>
             </label>
             </div></td>
@@ -59,9 +112,9 @@
     
         <tr style="height: 40px;">
             <td class="DeviceFont">Outer Blue Light</td>
-            <td style="position: relative; float: right;"><div class="_right">
+            <td style="position: relative; text-align: right; right: 3%;"><div class="_right">
             <label class="switch">
-                <input type="checkbox" id="MRB0" onclick="update(3,mainElements,0)">
+                <input type="checkbox" id="MRB0" onclick="toggleLedStripGlare(1)">
                 <span class="slider round"></span>
             </label>
             </div></td>
@@ -70,18 +123,18 @@
     
         <tr style="height: 40px;">    
             <td class="DeviceFont">Inner Blue Light</td>
-            <td style="position: relative; float: right;"><div class="_right">
+            <td style="position: relative; text-align: right; right: 3%;"><div class="_right">
             <label class="switch">
-                <input type="checkbox" id="MRB1" onclick="update(4,mainElements,0)">
+                <input type="checkbox" id="MRB1" onclick="toggleLedStripGlare(2)">
                 <span class="slider round"></span>
             </label>
         </div></td>
         </tr>
         <tr style="height: 40px;">
             <td class="DeviceFont">Plug</td>
-            <td style="position: relative; float: right;"><div class="_right">
+            <td style="position: relative; text-align: right; right: 3%;"><div class="_right">
                 <label class="switch">
-                    <input type="checkbox" id="MRP0" onclick="update(5,mainElements,0)">
+                    <input type="checkbox" id="MRP0" onclick="checkplugtoggle(0,this)">
                     <span class="slider round"></span>
                 </label>
             </div></td>
@@ -92,11 +145,15 @@
 </div>
 
 <div id="lobby">
+    ui doesn't exists!
+</div>
+
+<div id="lobbyLegacy">
     <table style="width: 95%; position: relative; margin:auto">
         
         <tr style="height: 40px;">
             <td class="DeviceFont">Right Lights</td>
-            <td style="position: relative; float: right;"><div class="_right">
+            <td style="position: relative; text-align: right; padding-right: 5%;"><div class="_right">
                 <label class="switch">
                     <input type="checkbox" id="LBL0" onclick="update(0,lobbyElements,1)">
                     <span class="slider round"></span>
@@ -106,7 +163,7 @@
 
         <tr style="height: 40px;">
             <td class="DeviceFont">Left Lights</td>
-            <td style="position: relative; float: right;"><div class="_right">
+            <td style="position: relative; text-align: right; padding-right: 5%;"><div class="_right">
                 <label class="switch">
                     <input type="checkbox" id="LBL1" onclick="update(1,lobbyElements,1)">
                     <span class="slider round"></span>
@@ -116,7 +173,7 @@
         
         <tr style="height: 40px;">
             <td class="DeviceFont">Center Light</td>
-            <td style="position: relative; float: right;"><div class="_right">
+            <td style="position: relative; text-align: right; padding-right: 5%;"><div class="_right">
                 <label class="switch">
                     <input type="checkbox" id="LBL2" onclick="update(2,lobbyElements,1)">
                     <span class="slider round"></span>
@@ -126,7 +183,7 @@
 
         <tr style="height: 40px;">
             <td class="DeviceFont">Fan</td>
-            <td style="position: relative; float: right;"><div class="_right">
+            <td style="position: relative; text-align: right; padding-right: 5%;"><div class="_right">
                 <label class="switch">
                     <input type="checkbox" id="LBF0" onclick="update(3,lobbyElements,1)">
                     <span class="slider round"></span>
@@ -136,15 +193,78 @@
     </table>
     
 </div>
+
+
+
+<div id="settings">
+    <img src="overlays/Backicon.png" onclick="deactiveSettings()" style="position:relative; width:110px; top:20px;">
+    <span style="font-size: 150%;">Settings</span><br><br>
+    <form id = "settingsform">
+
+        <table style="width: 100%;table-layout: fixed; border-width: 0px; " >  
+            
+            <tr style="height: 100px;">
+                <td style="position: relative; padding-left: 2%;">
+                    <label for="fdi">Fetch Interval</label>
+                </td>
+                <td align="right" style="padding-right: 2%;">
+                    <input class="settingsinput" type="text" name="fdi" size="5">
+                </td>
+            </tr>
+
+            <tr style="height: 100px;">
+                <td style="position: relative; padding-left: 2%;">
+                    <label for="lcb">legacy Main</label>
+                </td>
+                <td align="right" style="padding-right: 7%; padding-top: 5%;">
+                    <label class="switch">
+                        <input type="checkbox" id="LMB" onclick="toggleRoomLegacy(0)">
+                        <span class="slider round"></span>
+                    </label>
+                </td>
+            </tr>
+
+            <tr style="height: 100px;">
+                <td style="position: relative; padding-left: 2%;">
+                    <label for="lcb">legacy Lobby</label>
+                </td>
+                <td align="right" style="padding-right: 7%; padding-top: 5%;">
+                    <label class="switch">
+                        <input type="checkbox" id="LLB" onclick="toggleRoomLegacy(1)">
+                        <span class="slider round"></span>
+                    </label>
+                </td>
+            </tr>
+
+        </table>
+
+    </form><br><br>
+    <div style="text-align: center;">
+        <button class="settingsbut" onclick="updateSettings()">Update</button>
+    </div>
+
+</div>
+
+<div id="footer" style="position: absolute; bottom: 0%; width: 100%; height: 5%; ">
+    <img id="statusico" src="overlays/circle-online.png" width="40px">
+    <h1 id="statustext">Connecting..</h1>
+    <img src="overlays/settings.png" style="position: absolute; width: 140px; bottom:3%; right: 3%;" onclick="activeSettings()">
+</div>
 </body>
 
 </html>
 
 <script>
 
-    setInterval(GetDeviceStatus,800);
+    var fetchinterval = 1600;
+    var fetchInterval = setInterval(GetDeviceStatus,fetchinterval);
 
-    let askStatus = [true,true]
+    var roomActive = 0;
+    var roomStatus = [false,false]
+  
+
+    var askStatus = [true,true]
+    
 
     var mainElements = [
         document.getElementById('MRL0'),
@@ -162,35 +282,20 @@
         document.getElementById('LBF0'),
     ];
 
+    var miscellaneousElements = [
+        document.getElementById('statusico'),
+        document.getElementById('statustext')
+    ]
+
 
 // Fetch Status
-    async function GetDeviceStatus(){
+        async function GetDeviceStatus(){
 
         if(askStatus[0]){
+
+            checkRoomStatus(0,true);
     
-        fetch('http://192.168.29.167:0080', {
-           method: 'POST',
-           headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: "{?}"
-
-        }).then((recieved) => {
-        recieved.text().then(msg => {
-            if(askStatus[0]){
-                updateDeviceStatus(msg,mainElements);
-                console.log(msg);
-            }
-        })
-    })
-    } 
-    else{
-        askStatus[0] = true;
-    }
-
-    if(askStatus[1]){
-
-        fetch('http://192.168.29.168:0080', {
+            fetch('http://192.168.29.167:0080', {
                method: 'POST',
                headers: {
                   'Content-Type': 'application/x-www-form-urlencoded'
@@ -199,31 +304,78 @@
 
             }).then((recieved) => {
             recieved.text().then(msg => {
-                if(askStatus[1]){
+                if(askStatus[0]){
+                    updateDeviceStatus(msg,mainElements);
+                    roomStatus[0] = true;
                     console.log(msg);
-                    updateDeviceStatus(msg,lobbyElements);   
-                }         
+                }
+            }).catch(() => {roomStatus[0] = false})
             })
-    })
+
+        } 
+        else{
+            askStatus[0] = true;
+        }
+
+        if(askStatus[1]){
+
+            checkRoomStatus(1,true);
+
+            fetch('http://192.168.29.168:0080', {
+                   method: 'POST',
+                   headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: "{?}"
+
+                }).then((recieved) => {
+                recieved.text().then(msg => {
+                    if(askStatus[1]){
+                        updateDeviceStatus(msg,lobbyElements);  
+                        roomStatus[1] = true;
+                        console.log("belowmsg");
+                        console.log(msg);
+                    }         
+                }).catch(() => {roomStatus[1] = false})
+            })
+     
+        }
+        else {
+            askStatus[1] = true;
+        }
+
     }
-    else {
-        askStatus[1] = true;
-    }
-}
+
+    GetDeviceStatus();
 
     function updateDeviceStatus(state,Devices){
         if(state){
             let i = 0;
-            Devices.forEach(element => {
-               if(state[i] == '1'){
-                    element.checked = true;
+            while(i <= 5)
+            {
+                if(i <=2){
+                    if(state[i] == 0){
+                        toggleLedGlareOff(i,false);
+                    }
+                    else {
+                        toggleLedGlareOn(i,false);
+                    }
                 }
-              else {
-                   element.checked = false
+                else if(i <= 4) {
+                    if(state[i] != ledStripGlareElementState[i-2]) {
+                        toggleLedStripGlare(i-2,false)
+                    }
+                }
+                else {
+                    if(state[i] == 0){
+                        togglePlugOff(i-5,false);
+                    }
+                    else {
+                        togglePlugOn(i-5,false);
+                    }
                 }
                 i++;
-            
-            });
+            }
         }
 }
     
@@ -257,30 +409,286 @@
         
 }
 
-    document.getElementById("mainroom").style.display = 'block'; 
-    document.getElementById("lobby").style.display = 'none'; 
-
+    var RoomLegacy = [
+        false,true
+    ]
+   
 
     // fade
+
+    function toggleRoom(_id,state)
+    {
+        if(_id == 0)
+        {
+            if(RoomLegacy[0]) {
+                document.getElementById("mainroomLegacy").style.display = state;
+            }
+            else {
+                document.getElementById("mainroom").style.display = state;
+            }
+        }
+        else if(_id == 1)
+        {
+            if(RoomLegacy[1]) {
+                document.getElementById("lobbyLegacy").style.display = state;
+            }
+            else {
+                document.getElementById("lobby").style.display = state;
+            }
+        }
+    }
+
+    function toggleRoomLegacy(index)
+    {
+        RoomLegacy[index] = !RoomLegacy[index]
+    }
+
+    document.getElementById("mainroomLegacy").style.display = 'none'; 
+    document.getElementById("mainroom").style.display = 'none'; 
+    document.getElementById("lobbyLegacy").style.display = 'none';
+    document.getElementById("lobby").style.display = 'none';
+    document.getElementById("settings").style.display = 'none';
+    document.getElementById("LLB").checked = true;
+
+    toggleRoom(0,'block');
+  
     function activeMain(){
+
         document.getElementById("roombut").classList.remove('tabbuttonsinactive');
         document.getElementById("roombut").classList.add('tabbuttonsactive');
         document.getElementById("lobbybut").classList.remove('tabbuttonsactive');
         document.getElementById("lobbybut").classList.add('tabbuttonsinactive');
 
-        document.getElementById("mainroom").style.display = 'block'; 
-        document.getElementById("lobby").style.display = 'none'; 
-}
+        toggleRoom(0,'block');
+        toggleRoom(1,'none');
+        roomActive = 0;
+
+        checkRoomStatus(0,false);
+
+    }
 
     function activelobby(){
+
         document.getElementById("lobbybut").classList.remove('tabbuttonsinactive');
         document.getElementById("lobbybut").classList.add('tabbuttonsactive');
         document.getElementById("roombut").classList.remove('tabbuttonsactive');
         document.getElementById("roombut").classList.add('tabbuttonsinactive');
 
-        document.getElementById("mainroom").style.display = 'none'; 
-        document.getElementById("lobby").style.display = 'block';  
-}
+        toggleRoom(0,'none');
+        toggleRoom(1,'block');
+        roomActive = 1;
+        checkRoomStatus(1,false);
+  
+    }
+
+    function activeSettings()
+    {
+        settingsactive = true;
+        toggleRoom(0,'none');
+        toggleRoom(1,'none'); 
+        document.getElementById("header").style.display = 'none';  
+        document.getElementById("settings").style.display = 'block';
+        document.getElementById("footer").style.display = 'none';
+        renderSettings(); 
+    }
+
+    function deactiveSettings()
+    {
+        document.getElementById("footer").style.display = 'block';
+        document.getElementById("header").style.display = 'block';
+        document.getElementById("settings").style.display = 'none';
+
+        activeMain();
+    }
+
+
+    function updateSettings()
+    {
+        form = document.getElementById("settingsform");
+        fetchinterval = form.fdi.value;
+        clearInterval(fetchInterval);
+        console.log(fetchinterval)
+        fetchInterval = setInterval(GetDeviceStatus,fetchinterval);
+        console.log("fetchIntervalUpdated");
+    }
+    
+    function renderSettings()
+    {
+        form = document.getElementById("settingsform");
+        form.fdi.value = fetchinterval;
+    }
+
+    //mainroom working code
+
+    var ledGlareElements = [
+        [
+            document.getElementById('ceilinglightray2'),
+            document.getElementById('ceilinglightray3'),
+            document.getElementById('ceilinglightray4')
+        ],
+        [
+            document.getElementById('ceilinglightray0'),
+            document.getElementById('ceilinglightray1'),
+            document.getElementById('LeftGlare')
+        ],
+        [
+            document.getElementById('ceilinglightray5'),
+            document.getElementById('ceilinglightray6'),
+            document.getElementById('ceilinglightray7')
+        ]
+    ];
+
+    var ledStripGlareElements = [
+        document.getElementById('LeftGlare'),
+        document.getElementById('OuterGlare'),
+        document.getElementById('RightGlare')
+    ]
+
+    var plugElements = [
+    document.getElementById('plugon')
+    ]
+
+
+    for (i of ledGlareElements) {
+        for(j of i) {
+        j.style.display = 'none';
+        }
+    }     
+
+    for (i of ledStripGlareElements) {
+        i.style.display = 'none';
+    }
+    for (i of plugElements) {
+        i.style.display = 'none';
+    }
+
+
+    var ledStripGlareElementState = [
+        false,false,false
+    ]
+
+
+
+    function toggleLedGlareOff(index,_up = true)
+    {
+        for(i of ledGlareElements[index]){
+        i.style.display = 'none';
+        }
+        mainElements[index].checked = false;
+
+        if(_up){
+        update(index,mainElements,0)
+        }
+        
+    }
+
+    function toggleLedGlareOn(index,_up = true)
+    {
+        for(i of ledGlareElements[index]){
+        i.style.display = 'block';
+        }
+        mainElements[index].checked = true;
+
+        if(_up){
+        update(index,mainElements,0)
+        }
+    }
+
+    function toggleLedStripGlare(index,_up = true)
+    {
+        console.log("index");
+        console.log(index);
+        if(ledStripGlareElementState[index]){
+            ledStripGlareElements[index].style.display = 'none';
+            ledStripGlareElementState[index] = false;
+            if(index == 0) {
+                toggleLedGlareOn(1);
+                if(_up){
+                update(1,mainElements,0)
+                }
+            }
+            else {
+                mainElements[2+index].checked = false;
+                if(_up){
+                update(2+index,mainElements,0)
+                }
+            }
+        }
+        else {
+            ledStripGlareElements[index].style.display = 'block';
+            ledStripGlareElementState[index] = true;
+            if(index == 0) {
+                toggleLedGlareOff(1);
+                if(_up){
+                update(1,mainElements,0)
+                }
+            }
+            else {
+                mainElements[2+index].checked = true;
+                if(_up){
+                update(2+index,mainElements,0)
+                }
+            }
+        }
+    }
+
+    function togglePlugOn(index,_up = true)
+    {
+        plugElements[index].style.display = 'block';
+        mainElements[5+index].checked = true;
+        if(_up){
+        update(5+index,mainElements,0)
+        }
+    }
+
+    function togglePlugOff(index,_up = true)
+    {
+        plugElements[index].style.display = 'none';
+        mainElements[5+index].checked = false;
+        if(_up){
+        update(5+index,mainElements,0)
+        }
+    }
+
+    function checkledtoggle(index,element)
+    {
+        if(element.checked) {
+            toggleLedGlareOn(index);
+        }
+        else {
+            toggleLedGlareOff(index);
+        }
+    }
+
+    function checkplugtoggle(index,element)
+    {
+        if(element.checked) {
+            togglePlugOn(index);
+        }
+        else {
+            togglePlugOff(index);
+        }
+        
+    }
+
+    function checkRoomStatus(triggerlocation,reset)
+    {   
+        if(triggerlocation == roomActive){ 
+
+            if(roomStatus[roomActive]){
+                miscellaneousElements[0].src = "overlays/circle-online.png";
+                miscellaneousElements[1].innerHTML = "Online";
+            }
+            else{
+                miscellaneousElements[0].src = "overlays/circle-offline.png";
+                miscellaneousElements[1].innerHTML = "Offline";
+            }
+            if(reset){
+                roomStatus[roomActive] = false;
+            }
+        }
+    }
+
 
 
 </script>

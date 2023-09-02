@@ -15,10 +15,12 @@ void setup()
 
   Console(println("start"));
 
+#ifdef __DEBUG__
   pinMode(test_led,OUTPUT);
   digitalWrite(test_led,HIGH);
   delay(4000);
   digitalWrite(test_led,LOW);
+#endif
 
   relaySetup();
   espSendRead("AT+CIPMUX=1",19);

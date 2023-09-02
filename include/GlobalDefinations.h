@@ -1,9 +1,9 @@
 // --DEBUG?
-#define __DEBUG__ 
+//#define __DEBUG__ 
 
 // --PLACETOCOMPILE?
-#define _LOBBY_
-//#define _MAINROOM_
+//#define _LOBBY_
+#define _MAINROOM_
 
 #ifdef __MEGA2560__
 #define ESP8266 Serial1

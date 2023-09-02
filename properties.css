@@ -1,8 +1,18 @@
+input,
+textarea,
+button,
+select,
+a {
+    -webkit-tap-highlight-color: transparent;
+    -moz-tap-highlight-color: transparent;
+}
+
 .switch  {
     position:  relative;
     display:  inline-block;
     width:  60px;
     height:  34px;
+    transform: scale(2.8);
 }
 
 .switch input  {
@@ -72,31 +82,270 @@ input:checked + .slider:before  {
     background-color: #e7e7e7;
     font-weight: 560;
     border: none;
-    padding: 15px 32px;
+    padding: 9% 18%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 19px;
+    font-size: 370%;
     width: 100%;
+    font-weight: bold;
     transition: 0.3s;
 }
 .tabbuttonsinactive{
     background-color: #555555;
     color: white;
     border: none;
-    padding: 15px 32px;
+    padding: 8% 16%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 17px;
+    font-size: 320%;
     width: 100%;
+    font-weight: bold;
     transition: 0.3s;
 }
 
 .DeviceFont{
     font-family:Helvetica;
     font-weight: 600;
-    font-size: x-large;
+    font-size: 550%;
     color: #2b2b2b;
 
+}
+
+
+
+/* Background Style */
+
+.ceilinglight {
+    position: absolute; 
+    width: 80px;
+    height: auto;
+}
+
+.ceilinglightray {
+    position: absolute;
+    width: 150px;
+    height: auto;
+    
+}
+
+.plug {
+    position: absolute;
+    left: 10px;
+    top: 1604px;
+    width: 200px;
+    height: auto;
+}
+
+#ceilinglight0 {
+    top: 708px;
+    left: 143px;
+}
+
+#ceilinglightray0 {
+    top: 673px;
+    left: 106px;
+}
+
+#ceilinglight1 {
+    top: 1258px;
+    left: 143px; 
+}
+
+#ceilinglightray1 {
+    top: 1223px;
+    left: 106px;
+}
+
+#ceilinglight2 {
+    top: 708px;
+    left: 513px;
+}
+
+#ceilinglightray2 {
+    top: 673px;
+    left: 476px;
+}
+
+#ceilinglight3 {
+    top: 1258px;
+    left: 513px; 
+}
+
+#ceilinglightray3 {
+    top: 1223px;
+    left: 476px;
+}
+
+#ceilinglight4 {
+    top: 1463px;
+    left: 328px; 
+}
+
+#ceilinglightray4 {
+    top: 1431px;
+    left: 291px;
+}
+
+#ceilinglight5 {
+    top: 508px;
+    left: 955px;
+}
+
+#ceilinglightray5 {
+    top: 473px;
+    left: 918px;
+}
+
+#ceilinglight6 {
+    top: 951px;
+    left: 955px;
+}
+
+#ceilinglightray6 {
+    top: 916px;
+    left: 918px;
+}
+
+#ceilinglight7 {
+    top: 1385px;
+    left: 955px;
+}
+
+#ceilinglightray7 {
+    top: 1350px;
+    left: 918px;
+}
+
+#LeftGlare{
+    position: absolute;
+    left:43px;
+    top: 583px;
+}
+#RightGlare{
+    position: absolute;
+    left: 408px;
+    top: 580px;
+}
+
+#OuterGlare{
+    position: absolute;
+    left: -170px;
+    top: 306px;
+}
+
+#OuterLedStripUP {
+    position: absolute;
+    left: 8px;
+    top: 401px;
+    height: 50px;
+    width: 898px;
+}
+
+#OuterLedStripRIGHT {
+    position: absolute;
+    left: 850px;
+    top: 401px;
+    height: 1170px;
+    width: 50px;
+}
+
+#LeftLedStripLeft {
+    position: absolute;
+    left: 56px;
+    top: 643px;
+    height: 925px;
+    width: 50px;
+}
+
+#LeftLedStripRight {
+    position: absolute;
+    left: 267px;
+    top: 643px;
+    height: 802px;
+    width: 50px;
+}
+
+#LeftLedStripTop {
+    position: absolute;
+    left: 53px;
+    top: 591px;
+    height: 50px;
+    width: 263px;
+}
+
+#LeftLedStripBottom {
+    position: absolute;
+    left: 283px;
+    top: 1391px;
+    height: 50px;
+    width: 127px;
+}
+
+#RightLedStripLeft {
+    position: absolute;
+    left: 637px;
+    top: 643px;
+    height: 925px;
+    width: 50px;
+}
+
+#RightLedStripRight {
+    position: absolute;
+    left: 423px;
+    top: 643px;
+    height: 802px;
+    width: 50px;
+}
+
+#RightLedStripTop {
+    position: absolute;
+    left: 423px;
+    top: 591px;
+    height: 50px;
+    width: 263px;
+  }
+
+.settingsbut{
+    padding: 2% 4%;
+    font-size: 65%;
+    font-weight: 600;
+    color: #3b3b3b;
+}
+
+.settingsinput {
+    text-align: right; 
+    width: 90%;
+    font-size: 80%;
+    font-family:Helvetica;
+    color: #3b3b3b;
+    font-weight: 510;
+    border-color: #3b3b3b;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+#settings{
+    color: #2b2b2b;
+    font-weight: 600;
+    font-size: 450%;
+    font-family:Helvetica;
+    
+}
+
+#statusico{
+    position: absolute;
+    left: 3%;
+    bottom: 29%;
+}
+
+#statustext{
+    position: absolute;
+    color:#4b4b4b;
+    font-weight: 700;
+    font-size: 300%;
+    font-family:Helvetica;
+    left: 8%;
+    bottom: -5%;
 }
